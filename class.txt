@@ -23,6 +23,7 @@ Project
 +projectStatus: String
 
 Tasks
+-task ID: string
 -task notes: string
 -status: string
 +isCompleted(): Boolean
