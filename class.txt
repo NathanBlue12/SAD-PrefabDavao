@@ -1,1 +1,30 @@
-This is where we put the classes
+Account
+-username: string
+-password: string
+
+Employees
+-employee id:string
+-first name: string
+-last name: string
+-role: string
+-phone number: string
+-email address: string
+-salary: float
++isAdmin(): boolean
+
+Admins
+-admin password: string
++hasFullPerms(): boolean
+
+Project
+-project ID: string
+-project status: String
++projectCompleted: Boolean
++projectStatus: String
+
+Tasks
+-task notes: string
+-status: string
++isCompleted(): Boolean
++giveStatus(): String
+
