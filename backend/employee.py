@@ -14,7 +14,7 @@ class Employee:
         self.account = account
         self.projects = []
 
-        def add_project(self, project):
+        def add_project(self, project): #adds project to an employee's load
             if not isinstance(project, Project):
                 raise Error("Invalid Project...")    
             self.projects.append(project) 

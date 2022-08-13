@@ -21,12 +21,16 @@ class Project:
         else:
             raise Error("Invalid Employee...")        
 
-    def add_employee (self, employee):
+    def add_employee (self, employee): #assigns project to an employee
         if not isinstance (employee, Employee):
             raise Error ("Invalid Employee...")
         self.employees.append(employee)
     
-    def add_task(self, task):
+    def add_task(self, task): #adds task to project
             if not isinstance(task, Task):
                 raise Error("Invalid Task...")    
-            self.tasks.append(task)        
+            self.tasks.append(task)   
+
+
+    def projectStatusGive(self): #gives that status of the project
+        return self.projectStatus     
