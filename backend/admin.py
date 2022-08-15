@@ -6,8 +6,5 @@ class Admin(Employee):
         self.adminPass = adminPass
 
     def hasFullPerms(self):
-        return False
+        return True
 
-s1 = Admin(00000, "Therone", "Almadin", "Admin", "000000", "therone@gmail.com", "0000", "0000", "0000")
-
-print(Admin.hasFullPerms(s1))

@@ -12,4 +12,4 @@ class Task:
 
 s1 = Task(000000, "Nothing", "COMPLETED", True)
 
-print(Task.giveStatus(s1))
+#print(Task.giveStatus(s1))

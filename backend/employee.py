@@ -23,7 +23,15 @@ class Employee:
         else:
             raise Error("Invalid Project...")
 
-
+        if isinstance(account, Account):
+            self.accounts.append(account)
+        elif isinstance (account, list):
+            for entry in account:
+                if not isinstance(entry, Account):
+                    raise Error("Invalid Account...")
+            self.accounts = account
+        else:
+            raise Error("Invalid Account...")            
 
     def add_project(self, project): #adds project to an employee's load
         if not isinstance(project, Project):
