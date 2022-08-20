@@ -9,7 +9,6 @@ Employees
 -role: string
 -phone number: string
 -email address: string
--salary: float
 +isAdmin(): boolean
 
 Admins
@@ -26,7 +25,7 @@ Tasks
 -task ID: string
 -task notes: string
 -status: string
-+isCompleted(): Boolean
++isCompleted(): Boolean 
 +giveStatus(): String
 
 This is a Change!
