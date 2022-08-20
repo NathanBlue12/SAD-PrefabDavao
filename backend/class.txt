@@ -20,7 +20,7 @@ Project
 -project ID: string
 -project status: String
 +projectCompleted: Boolean
-+projectStatus: String
++projectStatus(): String
 
 Tasks
 -task ID: string
