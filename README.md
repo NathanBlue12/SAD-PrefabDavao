@@ -13,7 +13,14 @@
 
  2021-2022
 
-MongoDB details: 
+MongoDB details:
+    FOR CLIENT
+    username: prefab01
+    password: prefab2022
+
+    FOR DEVELOPERS
+    username: prefabdev
+    password: prefab9269
 
 
  Asana: https://app.asana.com/share/adduedu/sad/1158846809089942/9d4bd77f2c8b8741874f9d1de6493ec3
