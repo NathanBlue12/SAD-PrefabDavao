@@ -1,9 +1,13 @@
 import collections
 from http import client
+from pydoc import doc
+from turtle import update
 from dotenv import load_dotenv, find_dotenv 
 import os
 import pprint
 from pymongo import MongoClient
+import random
+import string
 
 load_dotenv(find_dotenv())
 
@@ -64,6 +68,8 @@ def create_initial_documents(): # !!!REMOVE AT DEPLOYMENT!!!
         "task_status" : "test_status_task"
     }
 
+
+
     #accounts_collection.insert_one(docTemplate_account)
     #admins_collection.insert_one(docTemplate_admin)
     #employees_collection.insert_one(docTemplate_Employee)
@@ -71,12 +77,13 @@ def create_initial_documents(): # !!!REMOVE AT DEPLOYMENT!!!
     #tasks_collection.insert_one(docTemplate_task)
 
     from bson.objectid import ObjectId
-    _id = ObjectId("6301399096ea90a251c79369")
+    _id = ObjectId("6301f4b4f3409c133c8d62f1")
     updates = {
-        "$set": {"account_id": "33333"}
+        "$set": {"action": "log-in"}
     }
-    accounts_collection.update_one({"_id": _id}, updates)
+    login_records_collection.update_one({"_id": _id}, updates)
 
+create_initial_documents()
 def get_Account_LogIn_Details(username): #gets account details
     account_details = []
     found_details = accounts_collection.find_one({"account_username": username})
@@ -97,11 +104,36 @@ def get_Account_LogIn_Details(username): #gets account details
         found_password = accounts_collection.find_one({"account_username": username}, {"account_password": 1, "_id" : 0})
         account_password = found_password['account_password']
         account_details.append(account_password)
-
-        #printer.pprint(account_details)
-
+ 
         return account_details
 
+def update_Time_In(account_id, date, time):
+    
+    id = string.digits
+    generatedID =  ''.join(random.choice(id) for i in range(5)) 
+    doc_login = {
+        "log_id": generatedID,
+        "account_id": account_id,
+        "login_date": date,
+        "login_time": time,
+        "action" : "log-in"
+    }
+    login_records_collection.insert_one(doc_login)
 
-print(get_Account_LogIn_Details("testUsername"))
+def update_Time_Out(account_id, date, time):
+        
+    id = string.digits
+    generatedID =  ''.join(random.choice(id) for i in range(5)) 
+    doc_logout = {
+        "log_id": generatedID,
+        "account_id": account_id,
+        "logout_date": date,
+        "logout_time": time,
+        "action" : "log-out"
+    }
+    login_records_collection.insert_one(doc_logout)
+
+
+update_Time_Out("55555", "2022-08-21", "01:59:00")
+#get_Account_LogIn_Details("testUsername")
 #create_initial_documents()
