@@ -20,13 +20,13 @@ print("connecting to database...") # connect to database
 
 try:
     connectionString = f"mongodb+srv://{username}:{password}@prefabcluster.fmgvmiy.mongodb.net/?retryWrites=true&w=majority" 
-    client = MongoClient(connectionString)
+    client = MongoClient(connectionString) #Friend said this is the cause of the error naga error pag mag connect sa mongodb
 except:
     print("Error Code: e0301")
 
 print("connecting to database ✓")
 
-mainDB = client.main # main database I have an error here SEND HELP - Nathan
+mainDB = client.main # main database    I have an error here SEND HELP - Nathan
 accounts_collection = mainDB.accounts 
 admins_collection = mainDB.admins 
 employees_collection = mainDB.employees
