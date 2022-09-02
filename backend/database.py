@@ -1,5 +1,4 @@
 import collections
-from http import client
 from pydoc import doc
 from turtle import update
 from dotenv import load_dotenv, find_dotenv 
@@ -8,6 +7,7 @@ import pprint
 from pymongo import MongoClient
 import random
 import string
+from http import client
 
 load_dotenv(find_dotenv())
 
@@ -26,7 +26,7 @@ except:
 
 print("connecting to database ✓")
 
-mainDB = client.main # main database
+mainDB = client.main # main database I have an error here SEND HELP - Nathan
 accounts_collection = mainDB.accounts 
 admins_collection = mainDB.admins 
 employees_collection = mainDB.employees
