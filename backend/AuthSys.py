@@ -1,13 +1,13 @@
 from datetime import date
 from datetime import time
-from database import databaseFuncs
+from database import database
 
 
 
 class AuthSys ():
 
     def login(username, password):
-        databaseFuncs.get_Account_LogIn_Details(username)
+        database.get_Account_LogIn_Details(username)
 
         #if usr == docTemplate_account and pwd == 'account_password '
         

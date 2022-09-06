@@ -34,7 +34,7 @@ log_records_collection = mainDB.log_records
 projects_collection = mainDB.projects
 tasks_collection = mainDB.tasks
 
-class databaseFuncs():
+class database():
 
     def create_initial_documents(): # !!!REMOVE AT DEPLOYMENT!!!
         docTemplate_account = {
