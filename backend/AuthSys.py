@@ -1,10 +1,7 @@
 from datetime import date
 from datetime import time
-from operator import truediv
+from database import database
 from pymongo import MongoClient
-from database import get_Account_LogIn_Details
-
-
 
 
 cluster = MongoClient("mongodb+srv://prefabdev:prefab9269@prefabcluster.fmgvmiy.mongodb.net/test")
