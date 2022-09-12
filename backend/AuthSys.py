@@ -7,12 +7,6 @@ now = datetime.now()
 #Date
 today = date.today()
 
-# Textual month, day and year	
-date = today.strftime("%Y-%m-%d")
-# Current Time
-time = now.strftime("%H:%M:%S")
-
-
 class AuthSys():
     # Checker
     global date, time
