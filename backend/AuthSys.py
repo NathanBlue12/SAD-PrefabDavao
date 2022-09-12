@@ -48,7 +48,6 @@ class AuthSys():
     def LoggingIn(Verified):
         if Verified == True:
             #print("Yatta")
-            database.get_Account_LogIn_Details(username=user)
             #userdetails 0 , 1 , 2 id , name , pass
             database.update_Time_In(account_id= userdetails[0], date=date, time=time )
             return True
