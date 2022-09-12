@@ -1,4 +1,3 @@
-from pymongo import MongoClient
 from database import database
 from datetime import date
 from datetime import datetime
@@ -9,110 +8,72 @@ now = datetime.now()
 #Date
 today = date.today()
 
-
-cluster = MongoClient("mongodb+srv://prefabdev:prefab9269@prefabcluster.fmgvmiy.mongodb.net/test")
-client = cluster
-
-mainDB = client.main 
-
-accounts_collection = mainDB.accounts 
-admins_collection = mainDB.admins 
-employees_collection = mainDB.employees
-log_records_collection = mainDB.log_records
-projects_collection = mainDB.projects
-tasks_collection = mainDB.tasks
-
-db = cluster["main"]
-collection = db["accounts"]
-
-
-
-
-# Checker
-def Authorization (username):
-
-#Find The Data inside the Collection
-    usr = accounts_collection.find_one({"account_username": username})
-    pwr = accounts_collection.find_one({"account_password": password})
-
-    #print(pwr)
-    
-    
-    try:
-        #username
-        if usr != None:
-            #print("Found Username")
-            try:
-                #password
-                if pwr != None:
-                            #print("Found Password")
-                            return True
-                            
-            except:
-                print("Password not found")
-                return False
-        else:
-            print("Username not found")
-            return False
-    except:
-        print("No Data")
-        return False
-
-
-#Find ID
-def account_id(username):
-        found_id = accounts_collection.find_one({"account_username": username}, {"account_id": 1, "_id" : 0})
-        account_id = found_id['account_id']
-        return account_id
-
-
-
-    # Textual month, day and year	
-date = today.strftime("%Y %B, %d")
+# Textual month, day and year	
+date = today.strftime("%Y-%m-%d")
 #print("d2 =", date)
 # Current Time
-time = now.strftime("%H:%M")
+time = now.strftime("%H:%M:%S")
 #print("time =", time)	
+
+class AuthSys():
+    # Checker
+    def Authorization (user):
+        
+    #Find The Data inside the Collection
+        
+        databaseusr = userdetails[1] #Username Database
+        databasepwr = userdetails[2] #password Database
+        usr = user
+        pwr = passw
+        
+        try:
+            #username
+            if usr == databaseusr:
+                print("Found Username")
+                try:
+                    #password
+                    if pwr == databasepwr:
+                                print("Found Password")
+                                return True
+                                
+                except:
+                    print("Password not found")
+                    return False
+            else:
+                print("Username not found")
+                return False
+        except:
+            print("No Data")
+            return False
+    def LoggingIn(Verified):
+        if Verified == True:
+            #print("Yatta")
+            database.get_Account_LogIn_Details(username=user)
+            #userdetails 0 , 1 , 2 id , name , pass
+            database.update_Time_In(account_id= userdetails[0], date=date, time=time )
+            return True
+        else:
+            print("Ōno")    
+            
+    def LoggingOut(Status):
+        if Status == False:
+            database.update_Time_Out(account_id= userdetails[0], date=date, time=time )
+        else:
+            print("Still Logged on")
+
 
 
 
 #Username input Remove Later
-username = input("Username: ")
-password = input("Password: ")
+user = input("Username: ")
+passw = input("Password: ")
 
+#userdetails 0 , 1 , 2 id , name , pass
+userdetails = database.get_Account_LogIn_Details(username=user)
+#Returns True or False Verification Process
+Verified = AuthSys.Authorization(user= user)
 
-#Verification Process
-Authorization(username)
-
-#Returns True or False
-Verified = Authorization(username)
-
-#Once Finish Verifying pass to get Account login details
-
-
-#Testing if True
-if Verified == True:
-    #print("Yatta")
-    account_id(username= username)
-    database.get_Account_LogIn_Details(username= username)
-    #print(database.get_Account_LogIn_Details(username= username))
-    database.update_Time_In(account_id= account_id(username=username), date=date, time=time )
-    
-else:
-    print("Ōno")    
-
-
-
-
-
-
-
-
-
-
-
-
-
+AuthSys.Logging(Verified= Verified)
 
 
 
