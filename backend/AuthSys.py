@@ -2,15 +2,16 @@ from database import database
 from datetime import date
 from datetime import datetime
 
-#Time
-now = datetime.now()
-#Date
-today = date.today()
+
 
 
 class AuthSys():
     # Checker
     global date, time
+    #Time
+    now = datetime.now()
+    #Date
+    today = date.today()
     # Textual month, day and year	
     date = today.strftime("%Y-%m-%d")
     # Current Time
@@ -59,8 +60,9 @@ class AuthSys():
             return False
 
 
-    def LoggedIn (account_id= userdetails[0],date=date,time=time):
-
+    def LoggedIn (Verified):
+        
+        AuthSys.LoggedIn(Verified= AuthSys.login(username= username,password= password))
     #Find The Data inside the Collection
         if Verified == True:
         #userdetails 0 , 1 , 2 id , name , pass
@@ -68,10 +70,10 @@ class AuthSys():
             return True
 
     def LoggedOut():
-        #if  == False:
-            #database.update_Time_Out(account_id= userdetails[0], date=date, time=time )
-        #else:
-            #print("Still Logged on")
+        if " " == False:
+            database.update_Time_Out(account_id= userdetails[0], date=date, time=time )
+        else:
+            print("Still Logged on")
 
     
 
