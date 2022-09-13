@@ -59,17 +59,24 @@ class AuthSys():
             return False
 
 
-    def Authorized (Verified,Status):
+    def LoggedIn (account_id= userdetails[0],date=date,time=time):
 
     #Find The Data inside the Collection
         if Verified == True:
         #userdetails 0 , 1 , 2 id , name , pass
             database.update_Time_In(account_id= userdetails[0], date=date, time=time )
             return True
-        #elif Status == False:
+
+    def LoggedOut():
+        #if  == False:
             #database.update_Time_Out(account_id= userdetails[0], date=date, time=time )
+        #else:
+            #print("Still Logged on")
 
     
+
+
+
 
 
 
@@ -77,4 +84,4 @@ class AuthSys():
 username = input("Username: ")
 password = input("Password: ")
 AuthSys.login(username=username, password=password)
-AuthSys.Authorized(Verified= AuthSys.login(username= username,password= password))
+AuthSys.LoggedIn(Verified= AuthSys.login(username= username,password= password))
