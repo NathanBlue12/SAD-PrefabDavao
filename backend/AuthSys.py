@@ -60,11 +60,11 @@ class AuthSys():
             return False
 
 
-    def LoggedIn (Verified):
+    def LoggedIn ():
         
-        AuthSys.LoggedIn(Verified= AuthSys.login(username= username,password= password))
+        LoggedIn = AuthSys.LoggedIn(Verified= AuthSys.login(username= username,password= password))
     #Find The Data inside the Collection
-        if Verified == True:
+        if LoggedIn == True:
         #userdetails 0 , 1 , 2 id , name , pass
             database.update_Time_In(account_id= userdetails[0], date=date, time=time )
             return True
